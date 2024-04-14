@@ -4,26 +4,25 @@ import Image from 'next/image'
 import Link from 'next/link';
 
 
-function Card() {
+function Card({item, key}) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} key={key}>
    
           <div className={styles.imgContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image}/>
+            {item.image && <Image src={item.image} alt="" fill className={styles.image}/>}
           </div>
           <div className={styles.textContainer}>
             <div className={styles.details}>
-                <span className={styles.date}>11.02.2024 - </span>
-                <span className={styles.category}>CULTURE</span>
+                <span className={styles.date}>{item.createdAt.substring(0,10)} - </span>
+                <span className={styles.category}>{item.catSlug}</span>
             </div>
-            <h1>Lorem ipsum dolor consectetur adipisicing elit.</h1>
-            <p className={styles.desc}> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Blanditiis repellat voluptates reiciendis placeat. 
-                Quod labore molestiae
-                dignissimos tenetur.
+            <Link href={`/posts/${item.slug}`}>
+              <h1>{item.title}</h1>
+            </Link>
+            <p className={styles.desc.substring(0,60)}> 
+                {item.desc}
             </p>
-            <Link href='/' className={styles.link}>Read More</Link>
+            <Link href={`/posts/${item.slug}`} className={styles.link}>Read More</Link>
           </div>
         
     </div>
