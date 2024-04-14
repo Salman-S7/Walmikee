@@ -9,7 +9,7 @@ function Card({item, key}) {
     <div className={styles.container} key={key}>
    
           <div className={styles.imgContainer}>
-            {item.image && <Image src={item.image} alt="" fill className={styles.image}/>}
+            {item.img && <Image src={item.img} alt="" fill className={styles.image}/>}
           </div>
           <div className={styles.textContainer}>
             <div className={styles.details}>
