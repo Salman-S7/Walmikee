@@ -1,12 +1,11 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import styles from "./writePage.module.css";
-import Image from 'next/image';
-import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.bubble.css";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import dynamic from "next/dynamic";
 
 
 import { initializeApp } from "firebase/app";
@@ -27,6 +26,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 const WritePage = () => {
+    const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }),[]);
     const [open, setOpen] = useState(false);
     const router = useRouter();
 
@@ -97,6 +97,7 @@ const WritePage = () => {
         
       }
   }
+
 
 
   if(status === "loading"){
