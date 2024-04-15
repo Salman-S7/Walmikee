@@ -12,7 +12,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCjxn3l2Af3yf_NU5tpYCB7SrC_KRTNWwk",
+  apiKey: process.env.FIREBASE,
   authDomain: "walmikee-app.firebaseapp.com",
   projectId: "walmikee-app",
   storageBucket: "walmikee-app.appspot.com",
